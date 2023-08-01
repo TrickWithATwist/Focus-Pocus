@@ -88,7 +88,7 @@ const handlestatus = () =>
 {
     const data = {status: onoffstatus};
     //put this here to make sure that the code is actually working idk
-    console.log("data has been saved"); 
+    console.log("data has been saved", onoffstatus); 
     chrome.storage.local.set(data);
 }
 
