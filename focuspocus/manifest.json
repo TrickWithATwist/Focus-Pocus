@@ -1,0 +1,29 @@
+{
+    "manifest_version": 3,
+    "name": "Focus-Pocus!",
+    "description": "Boost your productivity! Easily focus on a web page while temporarily blocking distractions.",
+    "version": "1.0",
+    "action":
+    {
+        "_comment": "code for the little window?", 
+        "default_popup": "popup/popup.html"
+
+    },
+    "icons":
+    {
+        "16": "images/tempicon.png",
+        "32": "images/tempicon.png",
+        "48": "images/tempicon.png",
+        "128":"images/tempicon.png"
+    },
+    "background":
+    {
+        "service_worker": "background.js",
+        "type": "module"
+    },
+    "permissions":
+    [
+        "storage",
+        "tabs"
+    ]
+}
