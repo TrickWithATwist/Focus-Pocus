@@ -56,10 +56,15 @@ chrome.runtime.onMessage.addListener(data =>
                 handlestatus();
             break;
             case "add":
-                //link is stored in link variable
-                link = chrome.tabs.query;
+                chrome.tabs.query({active: true, currentWindow: true}, (tabs) =>
+                {
+                    if(tabs && tabs.length > 0)
+                    {
+                        link = tabs[0].url;
+                        addlink();
+                    }
+                });
                 //link will be added to local storage data via function
-                addlink();
             break;
             case "debug":
                 //this case logs different values to console to see variable values
@@ -94,7 +99,7 @@ const addlink = () =>
     //setting data for the url that is going to be focused on 
     chrome.storage.local.set({keylink: link}).then(() =>
     {
-        console.log("link saved");
+        console.log("link saved", link);
     })
 }
 
