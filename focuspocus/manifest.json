@@ -11,10 +11,10 @@
     },
     "icons":
     {
-        "16": "images/tempicon.png",
-        "32": "images/tempicon.png",
-        "48": "images/tempicon.png",
-        "128":"images/tempicon.png"
+        "16": "images/focuspocuscircle.png",
+        "32": "images/focuspocuscircle.png",
+        "48": "images/focuspocuscircle.png",
+        "128":"images/focuspocuscircle.png"
     },
     "background":
     {
