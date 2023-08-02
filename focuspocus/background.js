@@ -1,6 +1,6 @@
 //test
 //instructionurl defined?
-var instructionurl = "https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley";
+var instructionurl = "https://www.youtube.com/watch?v=0XkC1AYATns&ab_channel=TrickWithATwist";
 
 //establish essential variable current url
 var currenturl;
