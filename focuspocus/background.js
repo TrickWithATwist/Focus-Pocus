@@ -26,19 +26,24 @@ const getonoffstatus = () =>
 
 //varible for the url data and stuff
 var link; 
-try
+//function for asynchronously loading in data for link if there is need to do that
+const loadlink = () =>
 {
     //value of link will be defined if there has been a link that has been saved to local storage
     chrome.storage.local.get(["keylink"]).then((value) =>
     {
-        console.log("link data get successful")
-        link = value.keylink;
+        if(value.keylink !== undefined)
+        {
+            //if there is a link that has been saved to local storage then that link will be equal to that 
+            console.log("link data get successful")
+            link = value.keylink;
+        }
+        else
+        {
+            //if not then link will remain an undefined value until something has been saved to local storage
+            null;
+        }
     })
-}
-catch(err)
-{
-    //if there has been no link that has been saved to the local storage then there will be no asynchronous preloading until there is
-    null;
 }
 
 //using the function before chrome listesns for events
