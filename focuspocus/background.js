@@ -114,7 +114,7 @@ chrome.tabs.onCreated.addListener(async () =>
     //check the url if it is not instructions or the saved url then redirect if onoffstatus = 1
     //establishing variable that represents current url 
     currenturl = await getCurrentTabURL();
-    if((currenturl !== link) ^ (currenturl !== instructionurl))
+    if((currenturl !== link) && (currenturl !== instructionurl))
     {
         if(onoffstatus == 1)
         {
