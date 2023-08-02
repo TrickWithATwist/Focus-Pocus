@@ -51,7 +51,7 @@ getonoffstatus();
 loadlink();
 
 //lisenting for messages
-chrome.runtime.onMessage.addListener(data =>
+chrome.runtime.onMessage.addListener( async data =>
     {
         const{event} = data
         switch(event)
@@ -63,14 +63,8 @@ chrome.runtime.onMessage.addListener(data =>
                 handlestatus();
             break;
             case "add":
-                chrome.tabs.query({active: true, currentWindow: true}, (tabs) =>
-                {
-                    if(tabs && tabs.length > 0)
-                    {
-                        link = tabs[0].url;
-                        addlink();
-                    }
-                });
+                link = await getCurrentTabURL();
+                addlink();
                 console.log("link saved:", link);
                 //link will be added to local storage data via function
             break;
@@ -136,5 +130,23 @@ const removelink = () =>
     catch(err)
     {
         console.log("idk there was an error or something ig you shouldn't remove a link that you didn't even add you dingus")
+    }
+}
+
+//function to get current URL (modified version of example code from chrome API documentation)
+async function getCurrentTabURL() 
+{
+    let queryOptions = { active: true, lastFocusedWindow: true };
+    // `tabs` will be an array containing the active tab (if found) or an empty array.
+    let tabs = await chrome.tabs.query(queryOptions);
+    if (tabs.length > 0) 
+    {
+      // Return the URL of the first tab (active tab)
+      return tabs[0].url;
+    } 
+    else 
+    {
+      // Return null or any other value to indicate no active tab is found
+      return null;
     }
 }
