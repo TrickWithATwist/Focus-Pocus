@@ -102,6 +102,12 @@ chrome.runtime.onMessage.addListener( async data =>
     )
 
 
+
+//if a tab has been created
+chrome.tabs.onCreated.addListener(
+    //check the url if it is not instructions or the saved url then redirect if onoffstatus = 1
+    
+)
 //functions
 const handlestatus = () =>
 {
