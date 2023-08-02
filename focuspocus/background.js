@@ -1,4 +1,7 @@
 //test
+//instructionurl defined?
+var instructionurl = "https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley";
+
 //establish essential variable current url
 var currenturl;
 
@@ -91,7 +94,6 @@ chrome.runtime.onMessage.addListener( async data =>
             case "instructions":
                 //creates new tab that leads to website with instructions
                 //FOR DEV: instructions webiste has not been made so this will redirect to placeholder website instead.
-                var instructionurl = "https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"
                 chrome.tabs.create({url: instructionurl});
             break;
             case "default":
