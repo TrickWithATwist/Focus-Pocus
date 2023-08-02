@@ -65,6 +65,7 @@ chrome.runtime.onMessage.addListener(data =>
                         addlink();
                     }
                 });
+                console.log("link saved:", link);
                 //link will be added to local storage data via function
             break;
             case "debug":
@@ -85,6 +86,7 @@ chrome.runtime.onMessage.addListener(data =>
                 if(link !== undefined)
                 {
                     removelink();
+                    link = undefined;
                 }
             break;
             case "default":
