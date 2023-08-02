@@ -86,6 +86,9 @@ chrome.runtime.onMessage.addListener( async data =>
                     link = undefined;
                 }
             break;
+            case "instructions":
+                //temp will fill up
+            break;
             case "default":
                 //empty
             break;

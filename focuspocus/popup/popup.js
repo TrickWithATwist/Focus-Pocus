@@ -22,4 +22,7 @@ clearelement.onclick = function()
 {
     chrome.runtime.sendMessage({event: "clearbutton"});
 }
-
+instructionelement.onclick = function()
+{
+    chrome.runtime.sendMessage({event: "instructions"});
+}
