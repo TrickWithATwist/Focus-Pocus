@@ -89,7 +89,8 @@ chrome.runtime.onMessage.addListener( async data =>
             case "instructions":
                 //creates new tab that leads to website with instructions
                 //FOR DEV: instructions webiste has not been made so this will redirect to placeholder website instead.
-                chrome.tabs.create({url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"});
+                var instuctionurl = "https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"
+                chrome.tabs.create({url: instuctionurl});
             break;
             case "default":
                 //empty
