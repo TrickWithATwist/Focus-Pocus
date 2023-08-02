@@ -46,8 +46,9 @@ const loadlink = () =>
     })
 }
 
-//using the function before chrome listesns for events
+//using these functions before chrome listesns for events
 getonoffstatus();
+loadlink();
 
 //lisenting for messages
 chrome.runtime.onMessage.addListener(data =>
