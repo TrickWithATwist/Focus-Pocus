@@ -91,8 +91,8 @@ chrome.runtime.onMessage.addListener( async data =>
             case "instructions":
                 //creates new tab that leads to website with instructions
                 //FOR DEV: instructions webiste has not been made so this will redirect to placeholder website instead.
-                var instuctionurl = "https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"
-                chrome.tabs.create({url: instuctionurl});
+                var instructionurl = "https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"
+                chrome.tabs.create({url: instructionurl});
             break;
             case "default":
                 //empty
@@ -112,7 +112,7 @@ chrome.tabs.onCreated.addListener(async () =>
     //check the url if it is not instructions or the saved url then redirect if onoffstatus = 1
     //establishing variable that represents current url 
     currenturl = await getCurrentTabURL();
-    if((currenturl !== link) ^ (currenturl !== instuctionurl))
+    if((currenturl !== link) ^ (currenturl !== instructionurl))
     {
         if(onoffstatus == 1)
         {
