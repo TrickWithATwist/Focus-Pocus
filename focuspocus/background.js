@@ -38,11 +38,6 @@ const loadlink = () =>
             console.log("link data get successful")
             link = value.keylink;
         }
-        else
-        {
-            //if not then link will remain an undefined value until something has been saved to local storage
-            null;
-        }
     })
 }
 
