@@ -1,4 +1,6 @@
 //test
+//establish essential variable current url
+var currenturl;
 
 //on/off button stuff
 //0 = off 1 = on
@@ -104,10 +106,21 @@ chrome.runtime.onMessage.addListener( async data =>
 
 
 //if a tab has been created
-chrome.tabs.onCreated.addListener(
+chrome.tabs.onCreated.addListener(async () =>
+{
+
     //check the url if it is not instructions or the saved url then redirect if onoffstatus = 1
-    
-)
+    //establishing variable that represents current url 
+    currenturl = await getCurrentTabURL();
+    if((currenturl !== link) || (currenturl !== instuctionurl))
+    {
+        if(onoffstatus == 1)
+        {
+            chrome.tabs.update({url: link});
+        }
+    }
+
+})
 //functions
 const handlestatus = () =>
 {
