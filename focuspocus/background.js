@@ -60,6 +60,8 @@ chrome.runtime.onMessage.addListener( async data =>
             case "add":
                 link = await getCurrentTabURL();
                 addlink();
+                //delay 
+                await new Promise(resolve => setTimeout(resolve, 0));
                 console.log("link saved:", link);
                 //link will be added to local storage data via function
             break;
