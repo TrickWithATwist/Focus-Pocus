@@ -78,6 +78,15 @@ chrome.runtime.onMessage.addListener(data =>
                 console.log(onoffstatus);
 
             break;
+            case "clearbutton":
+                //clearbutton event stuff
+                //if the forget url button has been pressed and there was a link saved
+                //the link will be removed from the local storage
+                if(link !== undefined)
+                {
+                    removelink();
+                }
+            break;
             case "default":
                 //empty
             break;

@@ -12,10 +12,14 @@ onoffelement.onclick = function()
 }
 addelement.onclick = function()
 {
-    chrome.runtime.sendMessage({event:"add"})
+    chrome.runtime.sendMessage({event:"add"});
 }
 debugelement.onclick = function()
 {
     chrome.runtime.sendMessage({event: "debug"});
+}
+clearelement.onclick = function()
+{
+    chrome.runtime.sendMessage({event: "clearbutton"});
 }
 
