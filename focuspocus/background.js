@@ -5,24 +5,23 @@
 var onoffstatus;
 
 
-//asynchronously loading in data hopefully?
+//function asynchronously loading in data hopefully?
 //if button has already been pressed then the value that has been saved to the local storage will be new value
 //for onoffstatus else the program will go on as usual as if onoffstatus is equal to 0
-try
+const getonoffstatus = () =>
 {
     chrome.storage.local.get(["status"]).then((value) =>
-    {
-        console.log("data get successful");
-        onoffstatus = value.status;
-    })
+        {
+            if(value.status !== undefined)
+            {
+                onoffstatus = value.status;
+            }
+            else
+            {
+                onoffstatus = 0;
+            } 
+        })
 }
-catch(err) 
-{
-    /*this only happens in the case where the user uses the chrome extension for the first time or turns it 
-    on after turning it off.*/
-    onoffstatus = 0;
-}
-
 
 
 //varible for the url data and stuff
@@ -42,6 +41,8 @@ catch(err)
     null;
 }
 
+//using the function before chrome listesns for events
+getonoffstatus();
 
 //lisenting for messages
 chrome.runtime.onMessage.addListener(data =>
@@ -70,8 +71,12 @@ chrome.runtime.onMessage.addListener(data =>
                 //this case logs different values to console to see variable values
                 if (link !== undefined)
                 {
+                    console.log("Link")
                     console.log(link);
                 }
+                console.log("OnOffStatus");
+                console.log(onoffstatus);
+
             break;
             case "default":
                 //empty
