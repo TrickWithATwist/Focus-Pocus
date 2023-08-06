@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "name": "Focus-Pocus!",
     "description": "Boost your productivity! Easily focus on a web page while temporarily blocking distractions.",
-    "version": "1.0",
+    "version": "1.5",
     "action":
     {
         "_comment": "code for the little window?", 

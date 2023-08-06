@@ -9,6 +9,8 @@ var currenturl;
 //0 = off 1 = on
 var onoffstatus;
 
+//var for the tab dropping status 
+var tabdrop; 
 
 //function asynchronously loading in data hopefully?
 //if button has already been pressed then the value that has been saved to the local storage will be new value
@@ -123,6 +125,28 @@ chrome.tabs.onCreated.addListener(async () =>
     }
 
 })
+
+//if the user has gone to another tab that has been opened 
+chrome.tabs.onActivated.addListener(async (activeInfo) => 
+{
+
+    //check the url if it is not instructions or the saved url then redirect if onoffstatus = 1
+    //establishing variable that represents current url 
+    currenturl = await getCurrentTabURL();
+    if((currenturl !== link) && (currenturl !== instructionurl))
+    {
+        if(onoffstatus == 1)
+        {
+            
+            chrome.tabs.update((activeInfo.tabId),{url: link});
+            
+            
+        }
+    }
+
+
+})
+
 //functions
 const handlestatus = () =>
 {
@@ -174,3 +198,13 @@ async function getCurrentTabURL()
       return null;
     }
 }
+
+//functions to avoid the dragging error
+chrome.tabs.onDetached.addListener(() =>
+{
+    tabdrop = true;
+})
+chrome.tabs.onAttached.addListener(() =>
+{
+    tabdrop = false;
+})
